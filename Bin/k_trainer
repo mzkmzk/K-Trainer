@@ -1,0 +1,21 @@
+#!/usr/bin/env node
+var path = require('path'),
+    fs = require('fs'),
+    param_path = process.argv[2],
+    file_path;
+
+
+
+if ( !param_path ) {
+    console.error('need path in process');
+    return ;
+}
+
+file_path = path.isAbsolute( param_path ) ? path.normalize( param_path ) : path.join( process.cwd(), process.argv[2]) ;
+
+if ( !fs.existsSync( file_path ) ) {
+    console.error(file_path+' not exists');
+    return;
+}
+var json = require(file_path);
+console.log( JSON.stringify(json) );
