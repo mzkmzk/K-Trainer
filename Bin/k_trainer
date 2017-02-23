@@ -1,8 +1,10 @@
 #!/usr/bin/env node
 var path = require('path'),
     fs = require('fs'),
+    Ftps = require('../Src/Ftps'),
     param_path = process.argv[2],
-    file_path;
+    file_path,
+    options;
 
 
 
@@ -17,5 +19,17 @@ if ( !fs.existsSync( file_path ) ) {
     console.error(file_path+' not exists');
     return;
 }
-var json = require(file_path);
-console.log( JSON.stringify(json) );
+options = require(file_path);
+
+if ( !(options instanceof Array) ) {
+    console.error(options+' is not array ');
+    return;
+}
+
+options.forEach(function(element) {
+    switch(element.type){
+        case 'ftp':
+            new Ftps(element);
+            break;
+    }
+})

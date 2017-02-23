@@ -24,7 +24,8 @@
   },
   "homepage": "http://k_utils.404mzk.com/",
   "dependencies": {
-    "babel-preset-es2015": "6.22.0"
+    "babel-preset-es2015": "6.22.0",
+    "json-comments": "0.2.1"
   },
   "devDependencies": {
     "glob": "^7.1.1",

@@ -1,10 +1,7 @@
-{
-    "setting": [
-        {
-            "path": "/Users/maizhikun/Learning/apache_sites/K-Trainer/Src",
-            "handle": [
-                "ftp" 
-            ]
-        }
-    ]
-}
+[
+    {
+        "path": "/Users/maizhikun/Project/Thunder/thunder-office/www-xunlei-com/v2017/k_pc/public",
+        "type": "ftp",
+        "execute": "change"
+    }
+]
