@@ -3,5 +3,15 @@
         "path": "/Users/maizhikun/Project/Thunder/thunder-office/www-xunlei-com/v2017/k_pc/public",
         "type": "ftp",
         "execute": "change"
+    },
+    {
+        "path": "/Users/maizhikun/Project/Thunder/thunder-office/www-xunlei-com/v2017/k_pad/public",
+        "type": "ftp",
+        "execute": "change"
+    },
+    {
+        "path": "/Users/maizhikun/Project/Thunder/thunder-office/www-xunlei-com/v2017/k_wap/public",
+        "type": "ftp",
+        "execute": "change"
     }
 ]

@@ -21,29 +21,50 @@ var path = require('path'),
             throw new Error('ftps crate fails')
         }
         this.listen_up( options, sftp_config, ftps )
+        
 
     };
 
 Ftps.prototype.listen_up = function( options, sftp_config, ftps ){
     var remote_path 
+    //console.log(path.join(sftp_config.content.remote_path, options.path.replace(sftp_config.dir,'')))
+     //这里先同步一遍. 主要为了目录结构 
+      /*ftps.mirror({
+              remoteDir: path.join(sftp_config.content.remote_path, options.path.replace(sftp_config.dir,'')), // optional, default: .
+              localDir:  options.path, // optional: default: .
+              //filter: /\.pdf$/, // optional, filter the files synchronized
+              parallel: true, // Integer, // optional, default: false
+              upload: true, // optional, default: false, to upload the files from the locaDir to the remoteDir
+            }).exec(function(err, res){
+                if ( err ) {
+                    throw error;
+                }
+                //console.log(err,res)
+            })*/
     gaze( options.path+'/**/*',function(err, watcher){
-        if ( err ) {
-            throw error;
-        }
+        if ( err ) throw error;
+        
         console.log(options.path + " listen " + options.type + " execute is "+ options.execute)
         this.on('all', function(event, filepath) {
-            //console.log(filepath + ' was ' + event);
+            //console.log(filepath + ' sftp_config.dir ' +  sftp_config.dir);
+            //console.log( ' filepath.replace( sftp_config.dir,"" )' +  filepath.replace( sftp_config.dir,'' ));
+            //@todo 遗留问题 路径可能有多个/,
             remote_path_dir = path.dirname( sftp_config.content.remote_path + "/" + filepath.replace( sftp_config.dir,'' ))
+            remote_path = ( sftp_config.content.remote_path + "/" + filepath.replace( sftp_config.dir,'' ));
+  
+            ;(function(filepath,remote_path_dir){
+                ftps.raw('mkdir -p '+remote_path_dir).put(filepath,remote_path).exec(function(err,res){
+                    if (err) throw err;
+                    console.log( filepath + ' upload to \n' +remote_path_dir +'\n');
+                    //待优化
+                    //这里如果目录存在 下面输出语句会 mkdir -p null { error: 'mkdir: Access failed: Failure (/data1/vhosts/www.xunlei.com///v2017/k_wap/public/js)\n', data: '' }
+                    //但是没有明显影响 就是会如果目录存在 会多余执行mkdir -p 和res中含有报错
+                    //console.log('mkdir -p',err,res,'\n');
+                })
+            })(filepath,remote_path_dir)
+
             
-            ftps.cd( remote_path_dir ).put(filepath).exec(function(err, res){
-                if ( err ) {
-                    console.log(filepath + "uplaod fail ")
-                    console.log(err)
-                    return;
-                }
-                console.log( filepath + ' upload to \n' + remote_path_dir)
-                
-            });
+          
             
         });
     });

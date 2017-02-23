@@ -1,6 +1,29 @@
 # K-Trainer
 
+#Requirements
+---
+
+You need to have the executable `lftp` installed on your computer.
+
+[LFTP Homepage](http://lftp.yar.ru/)
+
+**Windows** ([Chocolatey](https://chocolatey.org/))
+```cmd
+C:\> choco install lftp
+```
+**OSX** ([Homebrew](http://brew.sh/))
+```bash
+sudo brew install lftp
+```
+**Linux**
+```bash
+sudo apt-get install lftp
+# or
+sudo yum install lftp
+```
+
 # API
+---
 
 | key     |                                                                                                                                                                                       |
 |---------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
