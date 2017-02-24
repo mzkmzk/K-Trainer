@@ -1,9 +1,11 @@
 # K-Trainer
 
-#Requirements
+Help you faster to complete daily operation command and upload
+
+# FTP Requirements
 ---
 
-You need to have the executable `lftp` installed on your computer.
+if you need FTP uoload ,You need to have the executable `lftp` installed on your computer.
 
 [LFTP Homepage](http://lftp.yar.ru/)
 
