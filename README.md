@@ -45,8 +45,8 @@ k-trainer Demo/demo.json
 |---------|-------------------------------------------------------------------------------------------------------------------------------|
 | real    | boolean, default is true,The object is valid?                                                                                 |
 | path    | Listening to the specified file path (recommend absolute path)                                                                |
-| type    | ftp  | shell                                                                                                                  |
-| execute | start  | auto                                                                                                                 |
+| type    | ftp  or shell                                                                                                                  |
+| execute | start or auto                                                                                                                 |
 | time    | 1. And only when the execute for auto works   2. auto for training in rotation (minimum of 5000)   3. unit is the second time |
 You can now import Markdown table cod
 
