@@ -22,12 +22,33 @@ sudo apt-get install lftp
 sudo yum install lftp
 ```
 
+# install
+
+```javascript
+npm install -g k-trainer
+```
+
+# use
+
+```
+cd K-Trainer
+
+k-trainer Demo/demo.json 
+```
+
 # API
 ---
 
-| key     |                                                                                                                                                                                       |
-|---------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| path    | Listening to the specified file path (recommend absolute path)                                                                                                                        |
-| type    | ftp | git | shell | npm                                                                                                                                                               |
-| execute | start | change | auto                                                                                                                                                                 |
-| time    | 1. The attribute of the execute invalid when to start 2. carrying out for the smallest change interval 3. auto for training in rotation (minimum of 3600)  4. unit is the second time |
+| key     |                                                                                                                               |
+|---------|-------------------------------------------------------------------------------------------------------------------------------|
+| real    | boolean, default is true,The object is valid?                                                                                 |
+| path    | Listening to the specified file path (recommend absolute path)                                                                |
+| type    | ftp  | shell                                                                                                                  |
+| execute | start  | auto                                                                                                                 |
+| time    | 1. And only when the execute for auto works   2. auto for training in rotation (minimum of 5000)   3. unit is the second time |
+You can now import Markdown table cod
+
+# DEMO
+---
+
+[look demo](/./Demo/demo.json) 

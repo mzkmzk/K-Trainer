@@ -26,7 +26,8 @@ var path = require('path'),
     };
 
 Ftps.prototype.listen_up = function( options, sftp_config, ftps ){
-    var remote_path 
+    var remote_path,
+        remote_path_dir;
     //console.log(path.join(sftp_config.content.remote_path, options.path.replace(sftp_config.dir,'')))
      //这里先同步一遍. 主要为了目录结构 
       /*ftps.mirror({

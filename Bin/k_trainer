@@ -2,6 +2,7 @@
 var path = require('path'),
     fs = require('fs'),
     Ftps = require('../Src/Ftps'),
+    Shell = require('../Src/Shell'),
     param_path = process.argv[2],
     file_path,
     options;
@@ -27,9 +28,15 @@ if ( !(options instanceof Array) ) {
 }
 
 options.forEach(function(element) {
+    if (element.real === false) return;
     switch(element.type){
         case 'ftp':
             new Ftps(element);
+            break;
+        case 'shell':
+            new Shell(element);
+            break;
+        default:
             break;
     }
 })

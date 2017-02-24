@@ -1,17 +1,43 @@
 [
     {
-        "path": "/Users/maizhikun/Project/Thunder/thunder-office/www-xunlei-com/v2017/k_pc/public",
+        "real": true,
+        "path": "/Users/maizhikun/Project/**/k_pc/public",
         "type": "ftp",
         "execute": "change"
     },
     {
-        "path": "/Users/maizhikun/Project/Thunder/thunder-office/www-xunlei-com/v2017/k_pad/public",
+        "path": "/Users/maizhikun/Project/**//k_pad/public",
         "type": "ftp",
         "execute": "change"
     },
     {
-        "path": "/Users/maizhikun/Project/Thunder/thunder-office/www-xunlei-com/v2017/k_wap/public",
+        "path": "/Users/maizhikun/Project/**//v2017/k_wap/public",
         "type": "ftp",
         "execute": "change"
+    },
+    {
+        "real": true,
+        "type": "shell",
+        "shell": {
+            "command": "webpack",
+            "args": ["-w"],
+            "options": {
+                "cwd": "/Users/maizhikun//**/v2017/k_pc"
+            }
+        },
+        "execute": "start"
+    },
+    {
+        "real": true,
+        "type": "shell",
+        "shell": [{
+            "command": "git",
+            "args": ["pull"],
+            "options": {
+                "cwd": "/Users/maizhikun/Project//**/-xunlei-com"
+            }
+        }],
+        "execute": "auto",
+        "time": "5001"
     }
 ]
