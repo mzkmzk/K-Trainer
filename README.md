@@ -53,4 +53,36 @@ You can now import Markdown table cod
 # DEMO
 ---
 
+```shell
+[
+    {
+        "real": true,
+        "type": "shell",
+        "shell": [{
+            "command": "git",
+            "args": ["pull"],
+            "options": {
+                "cwd": "/Users/maizhikun/Project//**/-xunlei-com"
+            }
+        }],
+        "execute": "auto",
+        "time": "5001"
+    },{
+        "real": true,
+        "path": "/Users/maizhikun/Project/**/k_pc/public",
+        "type": "ftp",
+        "execute": "change"
+    }
+
+]
+```
+
+or
+
 [look demo](/./Demo/demo.json) 
+
+# FTP SETTING
+
+ftp will find sftp-config.json in "path" until "/" 
+
+tips:  [sftp-config.json demo](http://wbond.net/sublime_packages/sftp/settings) 
