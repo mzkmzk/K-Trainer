@@ -1,7 +1,7 @@
 {
   "name": "k-trainer",
   "author": "maizhikun",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "Help you faster to complete daily operation command and upload",
   "main": "./Bin/k_trainer",
   "scripts": {

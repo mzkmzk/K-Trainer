@@ -41,7 +41,7 @@ You can now import Markdown table cod
             "command": "git",
             "args": ["pull"],
             "options": {
-                "cwd": "/Users/maizhikun/Project//**/-xunlei-com"
+                "cwd": "/Users/maizhikun/Project//**/-**-com"
             }
         }],
         "execute": "auto",
