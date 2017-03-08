@@ -24,6 +24,16 @@ Shell.prototype.start_shell = function(option){
                             )
                 console.log(data.toString()+"\n")
             })
+            
+            //监听错误
+            child.stderr.on('data', (data) => {
+                 console.log("listener on data, cwd is " + ( element.options && (element.options.cwd || '') ),
+                             " command is  " + element.command,
+                             " args is ",
+                             element.args
+                            )
+                console.log('stderr error', data.toString()+"\n")
+            });
 
             //监听子进程结束
             child.on('exit', function(code){

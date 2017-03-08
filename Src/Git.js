@@ -12,8 +12,11 @@ var exec = require('child_process').exec,
         })
     }
 
-Git.prototype.push = function(){
-    exec(' git add . && git commit -m "fix" && git push ')
+Git.prototype.push = function( options ){
+    var options = {
+        
+    }
+    exec(' git add . && git commit -m "fix" && git push ',)
 }
 
 module.exports = Git;
