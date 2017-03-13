@@ -3,17 +3,30 @@
 Help you faster to complete daily operation command and upload
 
 
-# install
+# Install
 
 ```javascript
 npm install -g k-trainer
 ```
 
-# use
+# Use
 
 ```
 k_trainer -d ./ // cp demo.json to ./
 k_trainer -j demo.json or k_trainer -j demo.json -g mzk
+```
+
+# Command
+
+```shell
+k_trainer --help
+Usage /usr/local/bin/k_trainer -j {json_file} -g {[group_name...]}
+
+Options:
+  --json, -j   config.json path                                         [string]
+  --group, -g  execute group, type is array|string         [array] [default: []]
+  --demo, -d   get a demo, config.json, set a path                      [string]
+  --help       Show help                                               [boolean]
 ```
 
 # API
@@ -29,7 +42,7 @@ options.data
 | time    | 1. And only when the execute for auto works   2. auto for training in rotation (minimum of 5000)   3. unit is the second time |
 You can now import Markdown table cod
 
-# DEMO
+# Demo
 ---
 
 ```shell
@@ -75,7 +88,7 @@ or
 
 [look demo](/./Demo/demo.json) 
 
-# FTP SETTING
+# FTP Setting
 
 ftp will find sftp-config.json in "path" until "/" 
 
