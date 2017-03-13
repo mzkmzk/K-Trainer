@@ -12,15 +12,15 @@ npm install -g k-trainer
 # Use
 
 ```
-k_trainer -d ./ // cp demo.json to ./
-k_trainer -j demo.json or k_trainer -j demo.json -g mzk
+k-trainer -d ./ // cp demo.json to ./
+k-trainer -j demo.json or k-trainer -j demo.json -g mzk
 ```
 
 # Command
 
 ```shell
-k_trainer --help
-Usage /usr/local/bin/k_trainer -j {json_file} -g {[group_name...]}
+k-trainer --help
+Usage /usr/local/bin/k-trainer -j {json_file} -g {[group_name...]}
 
 Options:
   --json, -j   config.json path                                         [string]
