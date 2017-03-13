@@ -1,39 +1,89 @@
 #!/usr/bin/env node
-var path = require('path'),
+var yargs = require('yargs'),
+    path = require('path'),
     fs = require('fs'),
     Ftps = require('../Src/Ftps'),
     Shell = require('../Src/Shell'),
+    _ =  require('underscore'),
     param_path = process.argv[2],
+    colors = require('colors'),
+    exec = require('child_process').exec,
+    exec_string,
     file_path,
-    options;
+    options,
+    args = yargs
+            .usage('Usage $0 -j {json_file} -g {[group_name...]} ')//语法介绍
+            .option('json',{ //对每个参数进行说明
+                alias: 'j', //简写
+                describe: 'config.json path',//说明
+                type: 'string',
+                //demandOption: 'Need config.json path' //必选的参数,如果没满足的说明
+                //choices: dir_array//仅限可通过的值
+            })
+            .option('group',{
+                alias: 'g',
+                describe: 'execute group, type is array|string',
+                default: [] ,//默认值,
+                type: 'array'
+            })
+            .option('demo',{
+                alias: 'd',
+                describe: 'get a demo, config.json, set a path',
+                //default: './' ,//默认值,
+                type: 'string'
+            })
+            .help()//自带help命令
+            .locale('en')//自定说明文案的语言
+            .argv;//获取参数
 
 
 
-if ( !param_path ) {
-    console.error('need path in process');
-    return ;
+if ( args.d ) {
+    exec_string = 'cp ' + path.join( __dirname,'../Demo/demo.json' ) + ' ' +  (args.d || './')
+    console.log(exec_string)
+    exec(exec_string)
+    return
 }
 
-file_path = path.isAbsolute( param_path ) ? path.normalize( param_path ) : path.join( process.cwd(), process.argv[2]) ;
+if ( !args.j) {
+    console.error('need -j for json');
+    return;
+}
 
-if ( !fs.existsSync( file_path ) ) {
+file_path = path.isAbsolute( args.json ) ? path.normalize( args.json ) : path.join( process.cwd(), args.json) ;
+    
+
+
+if (  !fs.existsSync( file_path ) ) {
     console.error(file_path+' not exists');
     return;
 }
-options = require(file_path);
+options = require(file_path) || [];
 
 if ( !(options instanceof Array) ) {
     console.error(options+' is not array ');
     return;
 }
 
+
+
+
+
+
 options.forEach(function(element) {
+    if ( !_.isArray( element.group )  ) element.group = [ element.group ]
+        
+     
+    if ( args.group.length !== 0 && _.intersection(args.group, element.group ).length === 0 ) return;
+    
     if (element.real === false) return;
+   
     switch(element.type){
         case 'ftp':
             new Ftps(element);
             break;
         case 'shell':
+
             new Shell(element);
             break;
         default:
