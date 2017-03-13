@@ -31,7 +31,6 @@ Options:
 
 # API
 options.data
----
 
 | key     |                                                                                                                               |
 |---------|-------------------------------------------------------------------------------------------------------------------------------|
@@ -43,7 +42,6 @@ options.data
 You can now import Markdown table cod
 
 # Demo
----
 
 ```shell
 {
@@ -95,7 +93,7 @@ ftp will find sftp-config.json in "path" until "/"
 tips:  [sftp-config.json demo](http://wbond.net/sublime_packages/sftp/settings) 
 
 # FTP Requirements
----
+
 
 if you need FTP uoload ,You need to have the executable `lftp` installed on your computer.
 
