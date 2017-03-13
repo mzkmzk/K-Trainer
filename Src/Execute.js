@@ -12,7 +12,7 @@ Execute.prototype.set_execute = function(option, callback, content, args){
             if ( option.time < 5000 ) option.time = 5000
             callback.call(content,args)
             setInterval(function(){
-                console.log('setInterval')
+                console.log('Interval')
                 callback.call(content,args)
             },option.time);
 

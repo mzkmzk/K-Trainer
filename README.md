@@ -12,12 +12,12 @@ npm install -g k-trainer
 # use
 
 ```
-cd K-Trainer
-
-k-trainer Demo/demo.json 
+k_trainer -d ./ // cp demo.json to ./
+k_trainer -j demo.json or k_trainer -j demo.json -g mzk
 ```
 
 # API
+options.data
 ---
 
 | key     |                                                                                                                               |
@@ -33,27 +33,42 @@ You can now import Markdown table cod
 ---
 
 ```shell
-[
-    {
-        "real": true,
-        "type": "shell",
-        "shell": [{
-            "command": "git",
-            "args": ["pull"],
-            "options": {
-                "cwd": "/Users/maizhikun/Project//**/-**-com"
-            }
-        }],
-        "execute": "auto",
-        "time": "5001"
-    },{
-        "real": true,
-        "path": "/Users/maizhikun/Project/**/k_pc/public",
-        "type": "ftp",
-        "execute": "change"
-    }
+{
+    "shell_concurrency": 1, //shell parallel num
+    "data": [
+        {
+            "real": false,
+            "path": "/Users/maizhikun",
+            "type": "ftp",
+            "execute": "change"
+        },
+        {
+            "group": "mzk",
+            "type": "shell",
+            "shell": {
+                "command": "echo",
+                "args": ["one"],
+                "options": {
+                    "cwd": "/Users/maizhikun/"
+                }
+            },
+            "execute": "start"
+        },
+        {
+            "group": "mzk",
+            "type": "shell",
+            "shell": {
+                "command": "echo two && echo three",
+                "options": {
+                    "cwd": "/Users/maizhikun/"
+                }
+            },
+            "execute": "auto",
+            "time": 3000
+        }
+    ]
+}
 
-]
 ```
 
 or

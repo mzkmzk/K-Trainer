@@ -5,7 +5,8 @@ var exec = require('child_process').exec,
     moment = require('moment'),
     _execute = require('./Execute'),
     q = new queue({
-            concurrency:  1
+            concurrency:  1,
+            autostart: true
         }),
     promise = Promise.resolve(), //new Promise(function(resolve, reject){
         //resolve()

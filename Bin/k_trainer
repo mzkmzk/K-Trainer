@@ -58,10 +58,16 @@ if (  !fs.existsSync( file_path ) ) {
     console.error(file_path+' not exists');
     return;
 }
-options = require(file_path) || [];
+options = require(file_path) ;
 
-if ( !(options instanceof Array) ) {
-    console.error(options+' is not array ');
+if (options instanceof Array){
+    options = {
+        data: options
+    }
+}
+
+if ( !(options instanceof Object) ) {
+    console.error(options+' is not Object or Array');
     return;
 }
 
@@ -70,7 +76,7 @@ if ( !(options instanceof Array) ) {
 
 
 
-options.forEach(function(element) {
+options.data.forEach(function(element) {
     if ( !_.isArray( element.group )  ) element.group = [ element.group ]
         
      
